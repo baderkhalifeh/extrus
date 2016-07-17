@@ -16,8 +16,7 @@ module.exports = {
 				})
 	},
 
-	newBlog : function(req,res){
-		console.log(1);
+	newBlog : function(req,res,next){
 		var newBlog = new Blog ({
 			from : req.body.username,
 			title : req.body.title,
@@ -26,12 +25,10 @@ module.exports = {
 
 		newBlog.save(function(err, newBlog){
 			if(err){
-				console.log(2);
 				res.status(500).send(err);
 			} else {
-				console.log(3);
 				res.status(200).send(newBlog);
 			};
-		})
+		});
 	}
 }
