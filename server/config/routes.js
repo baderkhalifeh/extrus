@@ -10,7 +10,7 @@ module.exports = function(app, express){
 	app.get('/api/users', userController.getAll);
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
-	
+	app.post('/api/users/update', userController.updateProfile);
 
 	app.get('/api/blogs', blogController.getAll);
 	app.post('/api/blogs', blogController.newBlog);
