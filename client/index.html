@@ -4,14 +4,43 @@
     <meta charset="utf-8" />
     <title>RBKme</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
     <h1>TESTING</h1>
-
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
+
+  <div ng-controller="mainCtrl" class="md-padding" id="popupContainer" ng-cloak>
+
+    <div>
+      <input type='text' ng-model='search' placeholder='filter' /><br><br>
+      <div class="users">
+        <div class="user"
+            ng-repeat="user in data.users | filter:search">
+            <img src="{{user.image}}" class="profilePic img-circle" ng-click="showProfile($event,user)" style="width:20%">
+            <br><br>
+          </div>
+        </div>
+    </div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/blog/blog.js"></script>
+    <script src="app/home/d3.js"></script>
+    <script src="app/home/home.js"></script>
+    <script src="app/profile/profileEdit.js"></script>
+    <script src="app/profile/profileView.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="uploadToImgur.js"></script>
+    <script src="config/api_keys.js"></script>
+    <script src="app/app.js"></script>
   </body>
 </html>
