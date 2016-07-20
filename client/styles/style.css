@@ -1,0 +1,36 @@
+TMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTMLHTMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTML
+.dialogBasicUsage #popupContainer {
+  position: relative; }
+.dialogBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+.dialogBasicUsage .footer, .dialogBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+.dialogBasicUsage button {
+  width: 200px; }
+.dialogBasicUsage div#status {
+  color: #c60008; }
+.dialogBasicUsage .dialog-prerendered md-checkbox {
+  margin-bottom: 0; }
+.profilePic {
+	width: 100%;
+}
+.profileInfo {
+  float: left;
+}
+.editLabel {
+  width: 30%;
+  float: left;
+}
+.editInput {
+  width: 50%;
+  float: left;
+}
+.myPasswordLabel {
+  width: 80%;
+}
+.myPasswordInput {
+  width: 80%;
+}
