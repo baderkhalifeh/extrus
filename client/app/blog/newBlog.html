@@ -13,22 +13,22 @@
 
         <h3>
         <div>
-          <label for="username" class="editLabel">Username</label>
+          <label for="username" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
           <input name='username' type="text"
             ng-model="blog.username"
             placeholder="Enter your username here" value="{blog.username}" class="editInput"/><br><br>
         </div>
         <div>
-          <label for="title" class="editLabel">Title</label>
+          <label for="title" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Title</label>
           <input name='title' type="text"
             ng-model="blog.title"
             placeholder="Enter your title here" value="{blog.title}" class="editInput"/><br><br>
         </div>
         <div>
-          <label for="blog" class="editLabel">Content</label>
-          <input name='blog' type="text"
-            ng-model="blog.blog"
-            placeholder="Enter your content here" value="{blog.blog}" class="editInput"/><br><br>
+          <label for="blog" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Content</label>
+          <textarea rows="10" cols="60" name="blog" ng-model="blog.blog" placeholder="Enter your content here"
+          value="{blog.blog}" class="editInput"> 
+          </textarea><br><br>
         </div>
         <div>
           <br>

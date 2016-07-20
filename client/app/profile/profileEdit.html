@@ -46,9 +46,9 @@
         </div>
         <div>
           <label for="About" class="editLabel">About Me</label>
-          <input name='about' type="text"
-            ng-model="user.About"
-            placeholder="Enter your bio here" value="{user.About}" class="editInput"/><br><br>
+          <textarea rows="10" cols="60" name="about" ng-model="user.About" placeholder="Enter your bio here"
+          value="{user.About}" class="editInput"> 
+          </textarea><br><br>
         </div>
         <div>
           <label for="password" class="myPasswordLabel">Change Your Password</label><br>
