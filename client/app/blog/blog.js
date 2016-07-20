@@ -1,6 +1,6 @@
 angular.module('RBKme.blog', [])
 
-.controller('BlogController', function ($scope,Blogs,Users) {
+.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users) {
 	$scope.data = {};
 
 	$scope.initalize = function(){
@@ -27,6 +27,33 @@ angular.module('RBKme.blog', [])
 			console.log(errors);
 		});
 	};
+
+	$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+	
+	$scope.addPost = function(ev) {
+	    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+	    $mdDialog.show({
+	      controller: 'newBlogController',
+	      templateUrl: 'app/blog/newBlog.html',
+	      parent: angular.element(document.body),
+	      targetEvent: ev,
+	      clickOutsideToClose:true,
+	      fullscreen: useFullScreen
+	    })
+	    .then(function(blog) {
+
+	    	$scope.initalize();
+
+	    }, function() {
+	      $scope.status = 'You cancelled the dialog.';
+	    });
+
+	    $scope.$watch(function() {
+	      return $mdMedia('xs') || $mdMedia('sm');
+	    }, function(wantsFullScreen) {
+	      $scope.customFullscreen = (wantsFullScreen === true);
+	    });
+  	};
 
 	$scope.initalize();
 });

@@ -1,6 +1,7 @@
 angular.module('RBKme', [
   'RBKme.services',
   'RBKme.blog',
+  'RBKme.newBlog',
   'RBKme.profileView',
   'RBKme.profileEdit',
   'RBKme.home',
