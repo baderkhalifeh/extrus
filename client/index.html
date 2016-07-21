@@ -7,8 +7,12 @@
     <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
-  <body>
+  <body ng-controller="mainCtrl">
     <h1>TESTING</h1>
+    <div ng-switch on="loggedIN">
+        <input type="button" class="btn btn-primary" ng-switch-when="false" ng-click="signin($event)" value="Sign in"/>
+        <input type="button" class="btn btn-primary" ng-switch-when="true" ng-click="signout($event)" value="Sign out"/>
+    </div>
     <div ng-view></div>
 
     <script src="lib/angular/angular.js"></script>
@@ -22,7 +26,6 @@
     <script src="app/auth/auth.js"></script>
     <script src="app/blog/blog.js"></script>
     <script src="app/blog/newBlog.js"></script>
-    <script src="app/home/d3.js"></script>
     <script src="app/home/home.js"></script>
     <script src="app/profile/profileEdit.js"></script>
     <script src="app/profile/profileView.js"></script>
