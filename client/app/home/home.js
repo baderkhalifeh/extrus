@@ -1,8 +1,10 @@
 angular.module('RBKme.home', [])
 
-.controller('HomeController', function ($scope, $mdDialog, $mdMedia,Users) {
+.controller('HomeController', function ($scope, $mdDialog, $mdMedia, Users, Auth) {
   $scope.status = '  ';
   $scope.data = {};
+
+  
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
   // initalize function to get all the users from the database
