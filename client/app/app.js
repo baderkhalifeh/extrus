@@ -6,6 +6,7 @@ angular.module('RBKme', [
   'RBKme.profileEdit',
   'RBKme.home',
   'RBKme.auth',
+  'RBKme.admin',
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
@@ -19,6 +20,10 @@ angular.module('RBKme', [
     .when('/blogs', {
       templateUrl: 'app/blog/blog.html',
       controller: 'BlogController',
+    })
+    .when('/admin', {
+      templateUrl: 'app/admin/admin.html',
+      controller: 'adminController',
     })
     .otherwise({
       redirectTo: '/'
