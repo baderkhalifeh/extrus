@@ -117,13 +117,11 @@ angular.module('RBKme.services', [])
   };
 
   // function to reset the password when you forget your password or username
-  var forgotPassword = function (type,userOrEmail) {
-    var data = {};
-    data[type] = userOrEmail;
+  var forgotPassword = function (obj) {
     return $http({
       method: 'POST',
       url: '/api/users/forget',
-      data : data
+      data : obj
     })
     .then(function (resp) {
       return resp;
