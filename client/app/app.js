@@ -2,6 +2,8 @@ angular.module('RBKme', [
   'RBKme.services',
   'RBKme.blog',
   'RBKme.newBlog',
+  'RBKme.Msg',
+  'RBKme.newMsg',
   'RBKme.profileView',
   'RBKme.profileEdit',
   'RBKme.home',
@@ -24,6 +26,10 @@ angular.module('RBKme', [
     .when('/admin', {
       templateUrl: 'app/admin/admin.html',
       controller: 'adminController',
+    })
+    .when('/messages', {
+      templateUrl: 'app/messages/messages.html',
+      controller: 'MsgController',
     })
     .otherwise({
       redirectTo: '/'
