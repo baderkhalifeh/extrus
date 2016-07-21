@@ -1,9 +1,13 @@
 angular.module('RBKme.blog', [])
 
-.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users) {
+.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users, Auth) {
 	$scope.data = {};
 
+	// calling the isAuth function to know whether the user has signed in or not yet
+	$scope.auth = Auth.isAuth;
+
 	$scope.initalize = function(){
+
 		Blogs.getAll()
 		.then(function(blogs){
 			$scope.data.blogs = blogs;
