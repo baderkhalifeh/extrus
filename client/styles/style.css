@@ -60,3 +60,21 @@ TMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTMLHTMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.
 .st_thumbs_wrapper {
   height: 10%;
 }
+.examples {
+  background: #ddd;
+  margin-bottom: 2em;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+}
+.myBtn {
+  background-color: #B51A82;
+  color:white;
+  margin-top: 5%;
+  width: 80%;
+}
+.myToolbar {
+  background-color: #B51A82;
+}
