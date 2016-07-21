@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var bluebird = require('bluebird');
-var Q = require('q');
 var SALT_WORK_FACTOR = 10;
 
 
@@ -19,6 +18,9 @@ var userSchema = new Schema({
 	image : {type : String }  ,
 	About : { type : String } ,  
 	pairReflect :  {type : Number},
+  counter : {type: Number}, //  This is a new counter that counts how many students reflect to this Student
+  gitHub:  {type : String},
+  employed : {type : Boolean},
 	salt: { type : String }
 });
 
@@ -41,7 +43,6 @@ userSchema.pre('save', function (next) {
         return next(err);
       }
       // override the cleartext password with the hashed one
-  
       user.password = hash;
       user.salt = salt;
       next();
