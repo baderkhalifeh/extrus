@@ -12,7 +12,10 @@
     <div ng-switch on="loggedIN">
         <input type="button" class="btn btn-primary" ng-switch-when="false" ng-click="signin($event)" value="Sign in"/>
         <input type="button" class="btn btn-primary" ng-switch-when="true" ng-click="signout($event)" value="Sign out"/>
+        <a class="btn btn-primary" href="#/">Home</a>
+        <a class="btn btn-primary" href="#/blogs">Blogs</a>
     </div>
+
     <div ng-view></div>
 
     <script src="lib/angular/angular.js"></script>
