@@ -43,10 +43,11 @@ angular.module('RBKme', [
       clickOutsideToClose:true,
       fullscreen: useFullScreen
     })
-    .then(function() {
-
-      $scope.loggedIN = true;
-      console.log('Successful Login');
+    .then(function(answer) {
+      if(answer){
+        $scope.loggedIN = true;
+        console.log('Successful Login');
+      }
 
     }, function() {
       $scope.status = 'You cancelled the dialog.';
