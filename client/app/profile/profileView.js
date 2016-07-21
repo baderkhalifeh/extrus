@@ -1,9 +1,17 @@
 angular.module('RBKme.profileView', [])
-.controller('profileViewController', function ($scope,$mdDialog,user) {
+.controller('profileViewController', function ($scope, $window, $mdDialog, user) {
   	
   	$scope.user = {};
   	$scope.user = user;
-	
+
+	$scope.sameUser = function(){
+		var token = $window.localStorage.getItem('com.RBKme');
+		if(!token){
+			return false;
+		}
+		return true;
+	}
+
 	$scope.hide = function() {
     	$mdDialog.hide();
 	};
