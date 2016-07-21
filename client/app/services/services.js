@@ -37,18 +37,6 @@ angular.module('RBKme.services', [])
     });
   };
 
-  // function to reset the password when you forget your password or username
-  var forgot = function (email) {
-  	return $http({
-      method: 'POST',
-      url: '/api/users/forget',
-      data : { email : email}
-    })
-    .then(function (resp) {
-      return resp;
-    });
-  }
-
   // function to save the edited info on the profile
   var editProfile = function (user) {
   	return $http({
@@ -65,7 +53,6 @@ angular.module('RBKme.services', [])
     getAll: getAll,
     getOne : getOne,
     addOne: addOne,
-    forgot: forgot,
     editProfile: editProfile
   };
 })
@@ -100,4 +87,53 @@ angular.module('RBKme.services', [])
     getAll: getAll,
     addOne: addOne
   };
-});
+})
+.factory('Auth', function ($http, $location, $window) {
+  // Don't touch this Auth service!!!
+  // it is responsible for authenticating our user
+  // by exchanging the user's username and password
+  // for a JWT from the server
+  // that JWT is then stored in localStorage as 'com.shortly'
+  // after you signin/signup open devtools, click resources,
+  // then localStorage and you'll see your token from the server
+  var signin = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signin',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('com.RBKme');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('com.RBKme');
+    $location.path('/');
+  };
+
+  // function to reset the password when you forget your password or username
+  var forgotPassword = function (type,userOrEmail) {
+    var data = {};
+    data[type] = userOrEmail;
+    return $http({
+      method: 'POST',
+      url: '/api/users/forget',
+      data : data
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  return {
+    signin: signin,
+    isAuth: isAuth,
+    forgotPassword: forgotPassword,
+    signout: signout
+  };
+});;
