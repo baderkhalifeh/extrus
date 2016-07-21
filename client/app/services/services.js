@@ -122,6 +122,34 @@ angular.module('RBKme.services', [])
   };
 
 })
+.factory('Messages', function ($http) {
+  var sendMessage = function (msg) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/sendMessage',
+      data: msg
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  var getMessages = function (fromTo) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/getMessages',
+      data: fromTo
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+
+  return {
+    sendMessage: sendMessage,
+    getMessages: getMessages
+  };
+})
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
