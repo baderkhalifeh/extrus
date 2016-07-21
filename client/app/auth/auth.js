@@ -1,6 +1,6 @@
 angular.module('RBKme.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location, $mdDialog, $mdMedia, Auth) {
+.controller('AuthController', function ($scope, $window, $location, $mdDialog, $mdMedia, Auth, Dialogs) {
   
   $window.username = '';
 
@@ -44,38 +44,17 @@ angular.module('RBKme.auth', [])
   };
 
   $scope.forgotPassword = function (ev) {
-      // defining the size of the pop-up to make it responsive
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-
-      // showing the pop-up and giving the handling to the profileViewController
-      $mdDialog.show({
-        controller: 'AuthController',
-        templateUrl: 'app/auth/forgot.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: useFullScreen
-      })
-      .then(function(answer) {
-        // if the user chose to edit the profile he/she
-        // will be redirected to another pop-up for editing the info.
-        if(answer){
-          console.log(answer);
-          $location.path('/');
-          // $scope.editProfile(ev,user,$mdDialog);
-        }
-      }, function() {
+    Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+    'AuthController','app/auth/forgot.html',ev,
+    {},function(answer){
+      if(answer){
+        console.log(answer);
         $location.path('/');
-        $scope.status = 'You cancelled the dialog.';
-      });
-
-      // watching the changes on the window size to modify it instantly
-      // to be responsive
-      $scope.$watch(function() {
-        return $mdMedia('xs') || $mdMedia('sm');
-      }, function(wantsFullScreen) {
-        $scope.customFullscreen = (wantsFullScreen === true);
-      });
+      }
+    },function(){
+      $location.path('/');
+      $scope.status = 'You cancelled the dialog.';
+    });
    };
 
    $scope.requestPass = function(){

@@ -1,6 +1,6 @@
 angular.module('RBKme.blog', [])
 
-.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users, Auth) {
+.controller('BlogController', function ($scope, $mdDialog, $mdMedia, Blogs, Users, Auth, Dialogs) {
 	$scope.data = {};
 
 	// calling the isAuth function to know whether the user has signed in or not yet
@@ -35,28 +35,13 @@ angular.module('RBKme.blog', [])
 	$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 	
 	$scope.addPost = function(ev) {
-	    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-	    $mdDialog.show({
-	      controller: 'newBlogController',
-	      templateUrl: 'app/blog/newBlog.html',
-	      parent: angular.element(document.body),
-	      targetEvent: ev,
-	      clickOutsideToClose:true,
-	      fullscreen: useFullScreen
-	    })
-	    .then(function(blog) {
-
-	    	$scope.initalize();
-
-	    }, function() {
-	      $scope.status = 'You cancelled the dialog.';
-	    });
-
-	    $scope.$watch(function() {
-	      return $mdMedia('xs') || $mdMedia('sm');
-	    }, function(wantsFullScreen) {
-	      $scope.customFullscreen = (wantsFullScreen === true);
-	    });
+	  Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+      'newBlogController','app/blog/newBlog.html',ev,
+      {},function(answer){
+        $scope.initalize();
+      },function(){
+        $scope.status = 'You cancelled the dialog.';
+      });
   	};
 
 	$scope.initalize();

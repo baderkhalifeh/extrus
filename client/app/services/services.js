@@ -88,6 +88,40 @@ angular.module('RBKme.services', [])
     addOne: addOne
   };
 })
+.factory('Dialogs', function ($http) {
+  // function to show the dialogs
+  var showDialog = function($scope,$mdDialog,$mdMedia,controller,htmlTemplate,event,paramsObj,successCB,failureCB){
+
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: controller,
+      templateUrl: htmlTemplate,
+      parent: angular.element(document.body),
+      targetEvent: event,
+      locals: paramsObj,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen
+    })
+    .then(function(answer) {
+      successCB(answer);
+
+    }, function() {
+      failureCB();
+    });
+
+    $scope.$watch(function() {
+      return $mdMedia('xs') || $mdMedia('sm');
+    }, function(wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true);
+    });
+
+  };
+
+  return {
+    showDialog:showDialog
+  };
+
+})
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user

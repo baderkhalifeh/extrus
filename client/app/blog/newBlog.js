@@ -18,9 +18,10 @@ angular.module('RBKme.newBlog', [])
 	$scope.answer = function() {
 
 		$scope.filled = true;
-		if(!$scope.blog.username || !$scope.blog.title || !$scope.blog.blog){
+		if(!$scope.blog.title || !$scope.blog.blog){
 			handleInputs($scope,'Please fill all fields');
 		} else {
+			$scope.blog.username = window.username;
 			Blogs.addOne($scope.blog)
 			.then(function(response){
 				if(response.status === 200){

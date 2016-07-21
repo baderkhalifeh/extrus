@@ -33,36 +33,22 @@ angular.module('RBKme', [
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
 })
-.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth) {
+.controller('mainCtrl', function ($scope, $mdDialog, $mdMedia, Auth, Dialogs) {
   
   // a flag to switch between signin and signout buttons
   $scope.loggedIN = false;
   
   $scope.signin = function(ev) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-    $mdDialog.show({
-      controller: 'AuthController',
-      templateUrl: 'app/auth/signin.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen
-    })
-    .then(function(answer) {
-      if(answer){
+    Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+      'AuthController','app/auth/signin.html',ev,
+      {},function(answer){
+        if(answer){
         $scope.loggedIN = true;
         console.log('Successful Login');
-      }
-
-    }, function() {
-      $scope.status = 'You cancelled the dialog.';
-    });
-
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
-    });
+        }
+      },function(){
+        $scope.status = 'You cancelled the dialog.';
+      });
   };
 
   $scope.signout = function () {

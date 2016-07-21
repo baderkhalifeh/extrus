@@ -1,6 +1,6 @@
 angular.module('RBKme.home', [])
 
-.controller('HomeController', function ($scope, $mdDialog, $mdMedia, Users, Auth) {
+.controller('HomeController', function ($scope, $mdDialog, $mdMedia, Users, Auth, Dialogs) {
   $scope.status = '  ';
   $scope.data = {};
 
@@ -20,69 +20,25 @@ angular.module('RBKme.home', [])
 
   // function to show a single profile in a pop-up upon clicking on a profile pic
   $scope.showProfile = function(ev,user) {
-    // defining the size of the pop-up to make it responsive
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-
-    // showing the pop-up and giving the handling to the profileViewController
-    $mdDialog.show({
-      controller: 'profileViewController',
-      templateUrl: 'app/profile/profileView.html',
-      parent: angular.element(document.body),
-      // sending the user as a parameter to the profileEditController
-      locals:{
-      	user: user
-      },
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen
-    })
-    .then(function(answer) {
-      // if the user chose to edit the profile he/she
-      // will be redirected to another pop-up for editing the info.
-      if(answer === 'Edit'){
-        $scope.editProfile(ev,user,$mdDialog);
-      }
-    }, function() {
-      $scope.status = 'You cancelled the dialog.';
-    });
-
-    // watching the changes on the window size to modify it instantly
-    // to be responsive
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
-    });
-
+    Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+      'profileViewController','app/profile/profileView.html',ev,
+      {user:user},function(answer){
+        if(answer === 'Edit'){
+          $scope.editProfile(ev,user);
+        }
+      },function(){
+        $scope.status = 'You cancelled the dialog.';
+      });
   };
 
-  $scope.editProfile = function(ev,user,parent) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
-    $mdDialog.show({
-      controller: 'profileEditController',
-      templateUrl: 'app/profile/profileEdit.html',
-      parent: angular.element(document.body),
-      // sending the user as a parameter to the profileEditController
-      locals:{
-        user: user
-      },
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen
-    })
-    .then(function(user) {
-
-      $scope.showProfile(ev,user);
-
-    }, function() {
-      $scope.status = 'You cancelled the dialog.';
-    });
-
-    $scope.$watch(function() {
-      return $mdMedia('xs') || $mdMedia('sm');
-    }, function(wantsFullScreen) {
-      $scope.customFullscreen = (wantsFullScreen === true);
-    });
+  $scope.editProfile = function(ev,user) {
+    Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+      'profileEditController','app/profile/profileEdit.html',ev,
+      {user:user},function(answer){
+        $scope.showProfile(ev,user);
+      },function(){
+        $scope.status = 'You cancelled the dialog.';
+      });
   };
 
   $scope.initalize();
