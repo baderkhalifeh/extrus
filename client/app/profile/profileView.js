@@ -8,6 +8,8 @@ angular.module('RBKme.profileView', [])
 		var token = $window.localStorage.getItem('com.RBKme');
 		if(!token){
 			return false;
+		} else if($window.username !== $scope.user.username){
+			return false;
 		}
 		return true;
 	}
