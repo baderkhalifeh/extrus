@@ -5,7 +5,6 @@ angular.module('RBKme.msgHistory', [])
 	$scope.data = {};
 	
 	$scope.initalize = function(){
-		console.log(fromToObj);
 		Messages.getMessages(fromToObj)
 		.then(function(response){
 			$scope.data.msgs = response;
