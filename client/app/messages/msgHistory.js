@@ -5,7 +5,7 @@ angular.module('RBKme.msgHistory', [])
 	$scope.data = {};
 	$scope.user = {};
 	$scope.friend = {};
-	
+
 	$scope.initalize = function(){
 		Messages.getMessages(fromToObj)
 		.then(function(response){
@@ -25,8 +25,6 @@ angular.module('RBKme.msgHistory', [])
 						break;
 					}
 				}
-				console.log($scope.user);
-				console.log($scope.friend);
 			})
 			.catch(function(error){
 				console.log(error);

@@ -8,19 +8,26 @@
     <br>
     <md-dialog-content>
 
-        <h3>
-        <div class="msgs"
-            ng-repeat="msg in data.msgs">
-            <h4>From: {{msg.from}} To: {{msg.to}} Text: {{msg.text}}</h4>
-            <br><br>
-        </div>
-        </h3>
+        <table>
+        <tbody>
+          <tr class="msgs" ng-repeat="msg in data.msgs">
+            <td ng-if="msg.from===user.username">
+              <img src="{{user.image}}" class="img-circle" style="width: 10%;"/>
+              <p>{{msg.text}}</p>
+            </td>
+            <td ng-if="msg.from===friend.username">
+              <img src="{{friend.image}}" class="img-circle" style="width: 10%;"/>
+              <p>{{msg.text}}</p>
+            </td>
+          </tr>
+        </tbody>
+        </table>
 
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
       <md-button ng-click="cancel()">
-       Cancel
+       Close
       </md-button>
     </md-dialog-actions>
   </form>
