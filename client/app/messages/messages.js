@@ -45,7 +45,16 @@ angular.module('RBKme.Msg', [])
 
 	// a function to show the histoy of messages between two users
 	$scope.showHistory = function(ev,friend){
-		console.log(friend);
+		Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+	      'msgHistoryController','app/messages/msgHistory.html',ev,
+	      {fromToObj:{username: window.username, friend: friend.username}},
+	      function(answer){
+	      	if(answer){
+	      		console.log(answer);
+	      	}
+	      },function(){
+	        $scope.status = 'You cancelled the dialog.';
+	      });
 	}
 
 	$scope.initalize();
