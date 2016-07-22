@@ -44,7 +44,9 @@ module.exports = {
 			$or : [
 			{from: username}, {to : username}
 			]
-		}).exec(function(err, messages){
+		})
+		.sort({ date : 1 })
+		.exec(function(err, messages){
 			// making a set to add unique usernames for the friends a user has been talking to
 			var friendsSet = new Set();
 			for(var i=0; i<messages.length; i++){
@@ -70,7 +72,9 @@ module.exports = {
 			$or : [
 			{from: username , to:friend}, {from : friend , to : username}
 			]
-		}).exec(function(err, messages){
+		})
+		.sort({date:-1})
+		.exec(function(err, messages){
 			// This is just to check the messages in your terminal
 			console.log("=========================================")
 			console.log('Chat Log : ')
