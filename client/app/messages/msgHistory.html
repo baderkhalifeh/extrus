@@ -9,16 +9,20 @@
     <md-dialog-content>
 
         <table>
-        <tbody>
-          <tr class="msgs" ng-repeat="msg in data.msgs">
-            <td ng-if="msg.from===user.username">
-              <img src="{{user.image}}" class="img-circle" style="width: 10%;"/>
-              <p>{{msg.text}}</p>
+        <tbody ng-repeat="msg in data.msgs">
+          <tr ng-if="msg.from===user.username">
+            <td class="col-lg-6"></td>
+            <td>
+              <h4 class="msgText col-lg-8 col-md-8 col-sm-8"  style="text-align: right;">{{msg.text}}</h4>
+              <img src="{{user.image}}" class="msgPic img-circle col-lg-4 col-md-4 col-sm-4"/>
             </td>
-            <td ng-if="msg.from===friend.username">
-              <img src="{{friend.image}}" class="img-circle" style="width: 10%;"/>
-              <p>{{msg.text}}</p>
+          </tr>
+          <tr ng-if="msg.from===friend.username">
+            <td>
+              <img src="{{friend.image}}" class="msgPic img-circle col-lg-4 col-md-4 col-sm-4"/>
+              <h4 class="msgText col-lg-8 col-md-8 col-sm-8">{{msg.text}}</h4>
             </td>
+            <td class="col-lg-6"></td>
           </tr>
         </tbody>
         </table>
