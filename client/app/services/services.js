@@ -133,7 +133,18 @@ angular.module('RBKme.services', [])
       return resp;
     });
   };
-
+  
+  var getMessagedFriends = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/getMessages',
+      data: user
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
+  
   var getMessages = function (fromTo) {
     return $http({
       method: 'POST',
@@ -147,7 +158,8 @@ angular.module('RBKme.services', [])
 
   return {
     sendMessage: sendMessage,
-    getMessages: getMessages
+    getMessages: getMessages,
+    getMessagedFriends: getMessagedFriends
   };
 })
 .factory('Auth', function ($http, $location, $window) {
