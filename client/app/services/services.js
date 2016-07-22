@@ -137,11 +137,11 @@ angular.module('RBKme.services', [])
   var getMessagedFriends = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/getMessages',
+      url: '/api/users/getUserMessagedFriends',
       data: user
     })
     .then(function (resp) {
-      return resp;
+      return resp.data;
     });
   };
   
@@ -152,7 +152,7 @@ angular.module('RBKme.services', [])
       data: fromTo
     })
     .then(function (resp) {
-      return resp;
+      return resp.data;
     });
   };
 

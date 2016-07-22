@@ -21,7 +21,7 @@ module.exports = function(app, express){
 	// Two Posts for getting the messages and sending the message
 	app.post('/api/users/sendMessage', messageController.sendMessage);
 	app.post('/api/users/getMessages', messageController.getMessage);
-	app.post('/api/users/etUserMessagedFriends', messageController.etUserMessagedFriends);
+	app.post('/api/users/getUserMessagedFriends', messageController.getUserMessagedFriends);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
 
