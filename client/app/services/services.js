@@ -55,7 +55,6 @@ angular.module('RBKme.services', [])
       url: '/api/users/pairReflect',
       data: user
     }).then(function(resp){
-      console.log(resp);
       return resp; 
     })
   }
