@@ -12,7 +12,8 @@ angular.module('RBKme', [
   'RBKme.admin',
   'ngRoute',
   'ngMaterial',
-  'ngAnimate'
+  'ngAnimate',
+  'jkAngularRatingStars'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
