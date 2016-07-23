@@ -22,7 +22,7 @@ client/lib
 dist/
 
 #dataBaseURI
-.secretDataBaseURI
+.herokuDataBase
 
 # Floobits
 .floo
