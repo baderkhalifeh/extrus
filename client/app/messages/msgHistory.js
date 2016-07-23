@@ -13,6 +13,9 @@ angular.module('RBKme.msgHistory', [])
 			.then(function(users){
 				var counter = 0;
 				var flag = true;
+				// getting the friend object, and the user object from the database
+				// to extract later the image and other properties for each
+				// user and use the data in the msg history box
 				for(var i=0; i<users.length; i++){
 					if(users[i].username === fromToObj.username){
 						$scope.user = users[i];
@@ -29,9 +32,6 @@ angular.module('RBKme.msgHistory', [])
 						break;
 					}
 				}
-				console.log($scope.data.msgs);
-				console.log($scope.user);
-				console.log($scope.friend);
 			})
 			.catch(function(error){
 				console.log(error);

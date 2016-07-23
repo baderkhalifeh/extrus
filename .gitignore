@@ -21,9 +21,6 @@ client/lib
 # Build files
 dist/
 
-#dataBaseURI
-.herokuDataBase
-
 # Floobits
 .floo
 .floobit

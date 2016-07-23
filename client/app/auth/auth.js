@@ -78,12 +78,14 @@ angular.module('RBKme.auth', [])
       $scope.filled = false;
       $scope.errorMsg = 'Please fill one of the boxes';
     } else {
-      // checking which input boxes in filled, to know whether you're requesting
+      // checking which input boxes in filled, to know whether you're requesting a password
+      // based on your username or you email
       if($scope.user.forogtUser){
         objToSend.username = $scope.user.forogtUser;
       } else if($scope.user.forgotEmail){
         objToSend.email = $scope.user.forgotEmail;
       }
+      // sending the request
       Auth.forgotPassword(objToSend)
       .then(function(response){
         console.log(response);

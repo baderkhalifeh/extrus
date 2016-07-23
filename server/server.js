@@ -1,4 +1,3 @@
-var mongoURILink = require('../.herokuDataBase.js').uri;
 var express = require('express');
 var mongoose = require('mongoose');
 
