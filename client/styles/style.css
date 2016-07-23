@@ -212,8 +212,6 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
 .search {
     width: 300px;
     box-sizing: border-box;
-    border: 2px solid white;
-    border-radius: 4px;
     font-size: 16px;
     background-color: white;
     background-image: url('searchicon.png');
