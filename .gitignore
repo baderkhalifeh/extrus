@@ -21,6 +21,9 @@ client/lib
 # Build files
 dist/
 
+#dataBaseURI
+.secretDataBaseURI
+
 # Floobits
 .floo
 .floobit
