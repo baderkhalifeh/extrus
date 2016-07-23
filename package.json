@@ -10,7 +10,7 @@
     "Sajedah Yousef <yousef.sajedah93@gmail.com>"
   ],
   "scripts": {
-    "postinstall":"bower install",
+    "postinstall":"./node_modules/.bin/bower install",
     "lint": "jscs ./"
   },
   "repository": {
