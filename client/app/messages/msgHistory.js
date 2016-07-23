@@ -12,6 +12,7 @@ angular.module('RBKme.msgHistory', [])
 			Users.getAll()
 			.then(function(users){
 				var counter = 0;
+				var flag = true;
 				for(var i=0; i<users.length; i++){
 					if(users[i].username === fromToObj.username){
 						$scope.user = users[i];
@@ -19,11 +20,18 @@ angular.module('RBKme.msgHistory', [])
 					} else if(users[i].username === fromToObj.friend){
 						$scope.friend = users[i];
 						counter++;
+					} else if(fromToObj.friend === 'Server' && flag){
+						flag = false;
+						$scope.friend = {image: 'http://i.imgur.com/FlEXhZo.jpg?1',username:'Server'};
+						counter++;
 					}
 					if(counter >= 2){
 						break;
 					}
 				}
+				console.log($scope.data.msgs);
+				console.log($scope.user);
+				console.log($scope.friend);
 			})
 			.catch(function(error){
 				console.log(error);

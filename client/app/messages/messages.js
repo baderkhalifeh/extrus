@@ -16,6 +16,8 @@ angular.module('RBKme.Msg', [])
 					for(var j=0; j<users.length; j++){
 						if(users[j].username === list[i]){
 							MsgdFrineds.push(users[j]);
+						} else if(window.username ==='admin' && list[j]==='Server'){
+							MsgdFrineds.push({firstName:'Server',lastName:'',username:'Server'});
 						}
 					}
 				}
