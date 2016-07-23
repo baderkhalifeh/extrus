@@ -15,7 +15,7 @@
 
             ng-repeat="user in data.users | filter:search">
 
-            <img class='img-circle' ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:14% ;">
+            <img ng-if="user.username!=='admin'" class='img-circle' ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:14% ;">
 
             <br><br>
     	</div> <center>
