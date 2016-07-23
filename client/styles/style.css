@@ -151,13 +151,13 @@ TMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTMLHTMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.
   float: left;
 }
 .editLabel {
-  width: 70%;
-  float: right;
+  width: 30%;
+  float: left;
   
 }
 .editInput {
-  width: 80%;
-  float: center;
+  width: 50%;
+  float: left;
 }
 .myPasswordLabel {
   width: 80%;
